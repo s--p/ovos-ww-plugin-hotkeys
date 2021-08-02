@@ -5,9 +5,9 @@ from setuptools import setup
 PLUGIN_ENTRY_POINT = 'ovos_ww_hotkeys=ovos_ww_plugin_hotkeys:HotKeysWakeWordPlugin'
 setup(
     name='ovos_ww_plugin_hotkeys',
-    version='0.1.0a1',
+    version='0.1.0a1post1',
     description='A wake word plugin for mycroft',
-    url='https://github.com/HelloChatterbox/dummy_wakeword_plugin',
+    url='https://github.com/OpenVoiceOS/ovos_ww_plugin_hotkeys',
     author='JarbasAi',
     author_email='jarbasai@mailfence.com',
     license='Apache-2.0',
