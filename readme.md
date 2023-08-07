@@ -6,7 +6,7 @@ plugin for Keyboard hotkeys, define a key combo to trigger listening
 
 `pip install ovos_ww_plugin_hotkeys`
 
-Then configure a wake_word with module set to `ovos_ww_hotkeys`
+Then configure a wake_word with module set to `ovos_ww_hotkeys` in mycroft.conf
 
 ```json
  "listener": {
