@@ -15,7 +15,7 @@ Then configure a wake_word with module set to `ovos_ww_hotkeys`
  "hotwords": {
     "hotkey": {
         "module": "ovos_ww_hotkeys",
-        "hotkey": "ctrl+shift+r"
+        "hotkey": "space"
     }
   }
  
