@@ -20,3 +20,14 @@ Then configure a wake_word with module set to `ovos_ww_hotkeys`
   }
  
 ```
+
+
+Requirements:
+python-evdev (https://python-evdev.readthedocs.io/en/latest/)
+
+ - apt-get install python-dev-is-python3 gcc
+ - apt-get install linux-headers-$(uname -r)
+ - sudo pip install evdev 
+
+user in ```input``` group
+
