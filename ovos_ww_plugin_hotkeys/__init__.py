@@ -27,9 +27,6 @@ class HotKeysWakeWordPlugin(HotWordEngine):
         for event in self.device.read():
             if event.type == ecodes.EV_KEY and event.code == self.hotkey_code and event.value == 1:
                 self.handle_hotkey_press
-                else
-                  time.sleep(1)
-                  pass
-                    
+                                    
     def stop(self):
         pass 
