@@ -8,7 +8,7 @@ class HotKeysWakeWordPlugin(HotWordEngine):
         super().__init__(hotword, config or {}, lang)
         self.found_ww = False
         self.hotkey_combo = self.config.get("hotkey", "KEY_LEFTCTRL+KEY_LEFTSHIFT+KEY_R")
-        self.device = InputDevice('/dev/input/event6')
+        self.device = InputDevice("/dev/input/event6")
 
     def handle_hotkey_press(self):
         self.found_ww = True
