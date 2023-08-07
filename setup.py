@@ -12,7 +12,7 @@ setup(
     author_email='jarbasai@mailfence.com',
     license='Apache-2.0',
     packages=['ovos_ww_plugin_hotkeys'],
-    install_requires=["ovos-plugin-manager>=0.0.1a7", "keyboard"],
+    install_requires=["ovos-plugin-manager>=0.0.1a7", "evdev"],
     zip_safe=True,
     classifiers=[
         'Development Status :: 3 - Alpha',
