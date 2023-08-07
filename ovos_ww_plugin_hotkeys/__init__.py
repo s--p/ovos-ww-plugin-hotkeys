@@ -1,18 +1,5 @@
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#    http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-#
 from ovos_plugin_manager.templates.hotwords import HotWordEngine
-import keyboard
-
+from evdev import InputDevice, ecodes, categorize
 
 class HotKeysWakeWordPlugin(HotWordEngine):
     """Keyboard hotkeys, define key combo to trigger listening"""
@@ -20,8 +7,8 @@ class HotKeysWakeWordPlugin(HotWordEngine):
     def __init__(self, hotword="hotkeys", config=None, lang="en-us"):
         super().__init__(hotword, config or {}, lang)
         self.found_ww = False
-        hotkey = self.config.get("hotkey", "ctrl+shift+r")
-        keyboard.add_hotkey(hotkey, self.handle_hotkey_press)
+        self.hotkey_combo = self.config.get("hotkey", "KEY_LEFTCTRL+KEY_LEFTSHIFT+KEY_R")
+        self.device = InputDevice('/dev/input/event6')
 
     def handle_hotkey_press(self):
         self.found_ww = True
@@ -39,6 +26,10 @@ class HotKeysWakeWordPlugin(HotWordEngine):
         """ In here you have access to live audio chunks, allows for
         streaming predictions, result still need to be returned in
         found_wake_word method """
+        # Read input events from the device
+        for event in self.device.read():
+            if event.type == ecodes.EV_KEY and event.code == ecodes.ecodes[self.hotkey_combo] and event.value == 1:
+                self.handle_hotkey_press()
 
     def stop(self):
         """ Perform any actions needed to shut down the hot word engine.
@@ -46,4 +37,4 @@ class HotKeysWakeWordPlugin(HotWordEngine):
             This may include things such as unload loaded data or shutdown
             external processes.
         """
-        keyboard.unhook_all_hotkeys()
+        pass  
