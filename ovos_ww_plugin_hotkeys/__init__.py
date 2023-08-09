@@ -1,7 +1,7 @@
 from ovos_plugin_manager.templates.hotwords import HotWordEngine
 from evdev import InputDevice, ecodes, categorize
 from ovos_utils.log import LOG
-import time
+from select import select
 
 class HotKeysWakeWordPlugin(HotWordEngine):
     """Spacebar hotkey, trigger listening with the spacebar"""
@@ -10,7 +10,7 @@ class HotKeysWakeWordPlugin(HotWordEngine):
         super().__init__(hotword, config or {}, lang)
         self.found_ww = False
         self.hotkey_code = ecodes.KEY_SPACE
-        self.device = InputDevice("/dev/input/event6")
+        self.device = InputDevice('/dev/input/event6')  
 
     def handle_hotkey_press(self):
         LOG.info("space pressed")
@@ -23,10 +23,13 @@ class HotKeysWakeWordPlugin(HotWordEngine):
         return False
 
     def update(self, chunk):
-        # Read input events from the device
-        for event in self.device.read():
-            if event.type == ecodes.EV_KEY and event.code == self.hotkey_code and event.value == 1:
-                self.handle_hotkey_press()
-                                    
+        # Use select to check if there are events to read from the device
+        r, w, x = select([self.device], [], [], 0)
+        if r:
+            # .read() will now surely return a list of events.
+            for event in self.device.read():
+                if event.type == ecodes.EV_KEY and event.code == self.hotkey_code and event.value == 1:
+                    self.handle_hotkey_press()
+
     def stop(self):
         pass 
