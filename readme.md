@@ -16,7 +16,7 @@ Then configure a wake_word with module set to `ovos_ww_hotkeys` in mycroft.conf,
  "hotwords": {
     "hotkey": {
         "module": "ovos_ww_hotkeys",
-        "listen": true, # I don't know if 'listen' is necessary
+        "listen": true, 
         "active": true, # to add the keyboard listener as an extra wake word option, next to the default voice wake word 'Hey Mycroft'
         "hotkey": "space"
       }
