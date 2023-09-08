@@ -15,13 +15,9 @@ plugin for Keyboard hotkeys, define a key combo to trigger listening. In this fo
 
 
 ## For OVOS-docker (https://github.com/OpenVoiceOS/ovos-docker/) 
-Install evdev in host
-Install evedev in container
 
-Add `git+https://github.com/timonvanhasselt/ovos-ww-plugin-hotkeys` to the stt.list file in `ovos/config` or install manually in the `ovos_listener` container.
-
-Add `/dev/input` in the `devices` section of `ovos_listener` in the docker-compose.yml
-The section in docker-compose looks like this afterwards:
+1. Add `/dev/input` in the `devices` section of `ovos_listener` in the docker-compose.yml and `group_add: - "102"` (group 102 is input)
+The ovos_listener section in docker-compose looks like this afterwards:
 
 
  `` 
@@ -55,6 +51,11 @@ The section in docker-compose looks like this afterwards:
       - ovos_messagebus
       - ovos_phal
 ``
+
+2. Install evedev in `ovos_listener` container
+
+3. Add `git+https://github.com/timonvanhasselt/ovos-ww-plugin-hotkeys` to the stt.list file in `ovos/config` or install manually in the `ovos_listener` container.
+(make sure evdev is installed first in the ovos_listener container before installing the plug-in, otherwise it will crash/restart all the time)
 
 
 Then configure a wake_word with module set to `ovos_ww_hotkeys` in mycroft.conf, add the lines
