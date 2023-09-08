@@ -18,8 +18,11 @@ Install evdev in host
 Install evedev in container
 
 Add `git+https://github.com/timonvanhasselt/ovos-ww-plugin-hotkeys` to the stt.list file in `ovos/config` or install manually in the `ovos_listener` container.
+
 Add `/dev/input` in the `devices` section of `ovos_listener` in the docker-compose.yml
 The section in docker-compose looks like this afterwards:
+
+
  `` 
  ovos_listener:
     <<: *podman
