@@ -1,6 +1,6 @@
 ## Description
 
-plugin for Keyboard hotkeys, define a key combo to trigger listening. In this fork I changed from 'keyboard' package (that needs root permissions) to 'python-evdev'. 
+plugin for Keyboard hotkeys, define a key combo to trigger listening. In this fork I changed from `keyboard` package (that needs root permissions) to `python-evdev`. 
 
 
 ## Install
@@ -20,7 +20,7 @@ Install evedev in container
 Add `git+https://github.com/timonvanhasselt/ovos-ww-plugin-hotkeys` to the stt.list file in `ovos/config` or install manually in the `ovos_listener` container.
 Add `/dev/input` in the `devices` section of `ovos_listener` in the docker-compose.yml
 The section in docker-compose looks like this afterwards:
- ` 
+ `` 
  ovos_listener:
     <<: *podman
     container_name: ovos_listener
@@ -50,7 +50,7 @@ The section in docker-compose looks like this afterwards:
     depends_on:
       - ovos_messagebus
       - ovos_phal
-`
+``
 
 
 Then configure a wake_word with module set to `ovos_ww_hotkeys` in mycroft.conf, add the lines
