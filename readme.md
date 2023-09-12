@@ -20,7 +20,7 @@ plugin for Keyboard hotkeys, define a key combo to trigger listening. In this fo
 The ovos_listener section in docker-compose looks like this afterwards:
 
 
- `` 
+ ```
  ovos_listener:
     <<: *podman
     container_name: ovos_listener
@@ -50,7 +50,7 @@ The ovos_listener section in docker-compose looks like this afterwards:
     depends_on:
       - ovos_messagebus
       - ovos_phal
-``
+```
 
 2. Install evedev in `ovos_listener` container
 
