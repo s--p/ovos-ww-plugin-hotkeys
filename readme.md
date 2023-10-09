@@ -8,7 +8,7 @@ plugin for Keyboard hotkeys, define a key combo to trigger listening. In this fo
 `pip install ovos_ww_plugin_hotkeys` (for Docker see below)
 `python-evdev` (https://python-evdev.readthedocs.io/en/latest/)
 
- - apt- get update
+ - apt-get update
  - apt-get install python-dev-is-python3 gcc
  - apt-get install linux-headers-$(uname -r)
  - pip install evdev 
