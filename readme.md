@@ -9,10 +9,11 @@ plugin for Keyboard hotkeys, define a key combo to trigger listening. In this fo
 `python-evdev` (https://python-evdev.readthedocs.io/en/latest/)
 
  - apt-get update
- - apt-get install python-dev-is-python3 gcc
- - apt-get install linux-headers-$(uname -r)
- - pip install evdev 
+ - apt-get install python-dev-is-python3 gcc -y
+ - apt-get install linux-headers-$(uname -r) -y
+ - pip install evdev
 
+Test with: `python -m evdev.evtest`
 
 ## For OVOS-docker (https://github.com/OpenVoiceOS/ovos-docker/) 
 
