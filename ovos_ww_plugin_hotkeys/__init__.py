@@ -4,7 +4,7 @@ from ovos_utils.log import LOG
 from select import select
 
 class HotKeysWakeWordPlugin(HotWordEngine):
-    """Spacebar hotkey, trigger listening with the spacebar"""
+    """Numpad2 hotkey, trigger listening with the numpad2 key"""
 
     def __init__(self, hotword="hotkeys", config=None, lang="en-us"):
         super().__init__(hotword, config or {}, lang)
