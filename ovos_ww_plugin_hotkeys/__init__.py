@@ -9,8 +9,8 @@ class HotKeysWakeWordPlugin(HotWordEngine):
     def __init__(self, hotword="hotkeys", config=None, lang="en-us"):
         super().__init__(hotword, config or {}, lang)
         self.found_ww = False
-        self.hotkey_code = ecodes.KEY_SPACE
-        self.device = InputDevice('/dev/input/event6')  
+        self.hotkey_code = ecodes.KEY_KP2
+        self.device = InputDevice('/dev/input/event0')  
 
     def handle_hotkey_press(self):
         LOG.info("space pressed")
